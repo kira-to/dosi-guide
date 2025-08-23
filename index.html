@@ -51,6 +51,44 @@
   footer{margin:32px 0 12px; text-align:center; color:var(--muted); font-size:.9rem}
   a{color:var(--brand); text-decoration:none}
   a:hover{text-decoration:underline}
+
+.step-image {
+  max-width: 90%;      
+  height: auto;
+  display: block;
+  margin: 10px auto;
+}
+
+@media (min-width: 768px) {
+  .step-image {
+    max-width: 400px;  /* PCで大きすぎないよう制限 */
+  }
+}
+
+/* 画像説明文（figcaption）を見やすく調整 */
+figcaption.meta {
+  font-size: 1rem;        /* 標準より大きく */
+  color: #333;            /* 黒に近いグレーで視認性UP */
+  text-align: center;     /* 中央寄せ */
+  margin-top: 6px;
+  font-weight: 500;       /* 少し太字で強調 */
+}
+
+@media (min-width: 768px) {
+  figcaption.meta {
+    font-size: 1.05rem;   /* PCではさらに少し大きく */
+  }
+}
+/* 準備③の画像キャプションを見やすくする */
+.step figure figcaption {
+  font-size: clamp(14px, 2vw, 18px);
+  color: #333;
+  font-weight: bold;
+  background: #f0f8ff;
+  padding: 6px 10px;
+  border-radius: 6px;
+  margin-top: 6px;
+}  
 </style>
 </head>
 <body>
@@ -116,67 +154,67 @@
 
   <!-- スクリーンショット (①〜⑬) -->
   <figure>
-    <img src="IMG_4701.jpg" alt="① Dapp Portalを検索" style="max-width:100%;">
+    <img src="IMG_4701.jpg" alt="① Dapp Portalを検索" class="step-image">
     <figcaption class="meta">① LINEで「Dapp Portal」を検索</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4702.jpg" alt="② Portalをタップ" style="max-width:100%;">
+    <img src="IMG_4702.jpg" alt="② Portalをタップ" class="step-image">
     <figcaption class="meta">② トーク画面下の「Portal」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4703.jpg" alt="③ マイページをタップ" style="max-width:100%;">
+    <img src="IMG_4703.jpg" alt="③ マイページをタップ" class="step-image">
     <figcaption class="meta">③ Dapp Portal右下「マイページ」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4704.jpg" alt="④ ウォレット接続をタップ" style="max-width:100%;">
+    <img src="IMG_4704.jpg" alt="④ ウォレット接続をタップ" class="step-image">
     <figcaption class="meta">④ 「ウォレット接続」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4705.jpg" alt="⑤ LINEで連携" style="max-width:100%;">
+    <img src="IMG_4705.jpg" alt="⑤ LINEで連携" class="step-image">
     <figcaption class="meta">⑤ LINEで連携</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4706.jpg" alt="⑥ 確認をタップ" style="max-width:100%;">
+    <img src="IMG_4706.jpg" alt="⑥ 確認をタップ" class="step-image">
     <figcaption class="meta">⑥ 「確認」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4707.jpg" alt="⑦ 復元用パスワード入力" style="max-width:100%;">
+    <img src="IMG_4707.jpg" alt="⑦ 復元用パスワード入力" class="step-image">
     <figcaption class="meta">⑦ 復元用パスワードを入力</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4708.jpg" alt="⑧ 次をタップ" style="max-width:100%;">
+    <img src="IMG_4708.jpg" alt="⑧ 次をタップ" class="step-image">
     <figcaption class="meta">⑧ 「次」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4709.jpg" alt="⑨ 簡単パスワード設定" style="max-width:100%;">
+    <img src="IMG_4709.jpg" alt="⑨ 簡単パスワード設定" class="step-image">
     <figcaption class="meta">⑨ 簡単パスワードを設定</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4710.jpg" alt="⑩ 続いてウォレットを連携する" style="max-width:100%;">
+    <img src="IMG_4710.jpg" alt="⑩ 続いてウォレットを連携する" class="step-image">
     <figcaption class="meta">⑩ 「続いてウォレットを連携する」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4711.jpg" alt="⑪ Approveをタップ" style="max-width:100%;">
+    <img src="IMG_4711.jpg" alt="⑪ Approveをタップ" class="step-image">
     <figcaption class="meta">⑪ 「Approve」をタップ</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4712.jpg" alt="⑫ 簡単パスワードを入力" style="max-width:100%;">
+    <img src="IMG_4712.jpg" alt="⑫ 簡単パスワードを入力" class="step-image">
     <figcaption class="meta">⑫ 簡単パスワードを入力</figcaption>
   </figure>
 
   <figure>
-    <img src="IMG_4713.jpg" alt="⑬ コピーアイコンで保存" style="max-width:100%;">
+    <img src="IMG_4713.jpg" alt="⑬ コピーアイコンで保存" class="step-image">
     <figcaption class="meta">⑬ 「マイウォレット」右のコピーアイコンをタップ → 保存</figcaption>
   </figure>
 
