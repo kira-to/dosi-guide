@@ -1,50 +1,142 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOSIからKAIAへの移行ガイド</title>
-  <style>
-    body { font-family: sans-serif; line-height: 1.8; margin: 20px; background: #f5f5f5; }
-    h1 { text-align: center; color: #2f7ef6; }
-    .step {
-      margin: 20px auto;
-      padding: 15px;
-      max-width: 600px;
-      border-left: 5px solid #2f7ef6;
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .arrow {
-      text-align: center;
-      font-size: 2em;
-      color: #2f7ef6;
-      margin: 10px 0;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DOSIからKAIAへの移行ガイド</title>
+<style>
+  :root{
+    --brand:#2f7ef6;
+    --ink:#111;
+    --muted:#5b6473;
+    --panel:#ffffff;
+    --bg:#f5f7fb;
+    --ok:#16a34a;
+    --warn:#d97706;
+  }
+  html,body{margin:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+       color:var(--ink); background:var(--bg); line-height:1.7}
+  .container{max-width:960px;margin:22px auto;padding:0 16px}
+  header h1{margin:0 0 6px; font-size:clamp(24px,6vw,40px); color:var(--brand); text-align:center}
+  header p{margin:0; color:var(--muted); text-align:center}
+
+  /* flow */
+  .flow{margin:28px auto; display:flex; flex-direction:column; gap:24px; align-items:stretch}
+  .step{position:relative; background:var(--panel); border-radius:12px; padding:18px 18px 18px 18px;
+        box-shadow:0 6px 16px rgba(18,24,40,.06),0 2px 4px rgba(18,24,40,.06);
+        border-left:6px solid var(--brand)}
+  .step h2{margin:0 0 6px; font-size:clamp(18px,3.6vw,22px)}
+  .step p{margin:0; color:var(--ink)}
+  .meta{color:var(--muted); font-size:.92rem; margin-top:6px}
+  .arrow{display:flex; justify-content:center; font-size:26px; color:var(--brand)}
+
+  /* 画像 */
+  figure{margin:10px 0 0}
+  figure img{max-width:100%; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  figcaption{font-size:.85rem; color:var(--muted); margin-top:4px}
+
+  /* 分岐（Yes/No の例） */
+  .branch{display:grid; gap:16px; grid-template-columns:1fr; margin-top:10px}
+  .branch .box{border:2px dashed var(--brand); border-radius:10px; padding:12px}
+  .badge{display:inline-block; font-weight:700; font-size:.86rem; padding:2px 8px; border-radius:999px}
+  .yes{background:#eaf8ee; color:var(--ok); border:1px solid #c7f0d4}
+  .no{background:#fff2e0; color:var(--warn); border:1px solid #ffe0b2}
+
+  @media(min-width:760px){
+    .branch{grid-template-columns:1fr 1fr}
+  }
+
+  /* フッター */
+  footer{margin:32px 0 12px; text-align:center; color:var(--muted); font-size:.9rem}
+  a{color:var(--brand); text-decoration:none}
+  a:hover{text-decoration:underline}
+</style>
 </head>
 <body>
-  <h1>DOSIからKAIAへの移行ガイド</h1>
-<img src="IMG_4698.jpeg" alt="ガイド画像" style="max-width:100%;">
-  <div class="step">
-    <h2>① DOSIウォレットを開く</h2>
-    <p>アプリを最新版にアップデートしてください。</p>
+  <div class="container">
+    <header>
+      <h1>DOSIからKAIAへの移行ガイド</h1>
+      <p>スマホだけでOK。スクショ付きのチャート式でご案内します。</p>
+    </header>
+
+    <section class="flow">
+
+      <!-- STEP 1 -->
+      <div class="step">
+        <h2>① DOSIウォレットを開く</h2>
+        <p>アプリを最新版にアップデートし、ウォレットを起動します。</p>
+        <p class="meta">メニューに「移行」「Transfer」などの表示があるか確認。</p>
+        <!-- 画像の例：アップロードしたファイル名に合わせて置き換え -->
+        <!-- 例: IMG_4698.jpeg を使う場合 -->
+        <!-- 不要ならこの figure ブロックごと削除してOK -->
+        <figure>
+          <img src="IMG_4698.jpeg" alt="DOSI ウォレット画面の例">
+          <figcaption>DOSI アプリの該当画面（例）。</figcaption>
+        </figure>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <!-- STEP 2 -->
+      <div class="step">
+        <h2>② 移行メニューを開く</h2>
+        <p>「KAIAへ移行」「Transfer」などのボタンをタップします。</p>
+        <div class="branch">
+          <div class="box">
+            <span class="badge yes">見つかった</span>
+            <p>次へ進み、移行対象のアイテムを選択します。</p>
+          </div>
+          <div class="box">
+            <span class="badge no">見つからない</span>
+            <p>アプリ更新／ログイン再試行。表示がなければ後述の「よくある質問」を参照。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <!-- STEP 3 -->
+      <div class="step">
+        <h2>③ KAIA ウォレットを準備</h2>
+        <p>KAIA対応のウォレット（例：Kaia Wallet 等）を準備・接続します。</p>
+        <p class="meta">ウォレット接続の承認ダイアログが出たら許可。</p>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <!-- STEP 4 -->
+      <div class="step">
+        <h2>④ 移行を実行</h2>
+        <p>対象アイテムを確認して「移行」→ ウォレットで署名/承認を実行。</p>
+        <p class="meta">混雑時は反映に時間がかかることがあります。</p>
+      </div>
+
+      <div class="arrow">↓</div>
+
+      <!-- STEP 5 -->
+      <div class="step">
+        <h2>⑤ 完了確認</h2>
+        <p>KAIAチェーン側で保有アイテムが表示されることを確認します。</p>
+        <p class="meta">表示までタイムラグがある場合は数分待って再表示。</p>
+      </div>
+
+      <!-- FAQ / 補足 -->
+      <div class="step">
+        <h2>よくある質問（簡易）</h2>
+        <ul>
+          <li><strong>画像が表示されない：</strong> ファイル名の大文字/拡張子が <code>src=""</code> と完全一致しているか確認。</li>
+          <li><strong>サイトが更新されない：</strong> 変更後に<strong>Commit changes</strong>したか、ページをリロード（キャッシュ削除）</li>
+          <li><strong>PC不要で編集？：</strong> GitHub の「… → Edit in place」でスマホから直接編集可能。</li>
+        </ul>
+      </div>
+
+    </section>
+
+    <footer>
+      最終更新：<script>document.write(new Date().toLocaleDateString('ja-JP'))</script> /
+      管理：<a href="https://github.com/kira-to/dosi-guide" target="_blank" rel="noopener">GitHub リポジトリ</a>
+    </footer>
   </div>
-
-  <div class="arrow">↓</div>
-
-  <div class="step">
-    <h2>② 移行ボタンを押す</h2>
-    <p>画面中央の「KAIAに移行」をタップします。</p>
-  </div>
-
-  <div class="arrow">↓</div>
-
-  <div class="step">
-    <h2>③ 確認して完了</h2>
-    <p>メッセージに従い承認すると移行完了です。</p>
-  </div>
-
 </body>
 </html>
