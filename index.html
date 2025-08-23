@@ -62,11 +62,142 @@
 
     <section class="flow">
 
+      <!-- STEP 0: ウォレット有無 -->
+    <div class="step">
+      <h2>準備①：KAIAウォレットを持っていますか？</h2>
+      <div class="branch">
+        <div class="box">
+          <span class="badge yes">持っている</span>
+          <p>次のステップへ進み、ウォレットアドレスを確認してください。</p>
+        </div>
+        <div class="box">
+          <span class="badge no">持っていない</span>
+          <p>KAIAウォレットを新規作成してください。作成が終わったら次へ進みます。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow">↓</div>
+
+ <!-- STEP 1: 新規作成 -->
+    <div class="step">
+      <h2>準備②：KAIAウォレットの新規作成</h2>
+      <p>まだウォレットが無い方は、下記ガイドに従って新規作成してください。</p>
+      <p>
+        <a href="https://medium.com/dapp-portal/mini-dapp%E3%82%A6%E3%82%A9%E3%83%AC%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E3%82%AC%E3%82%A4%E3%83%89-line-d5b279d6b9c3" target="_blank" rel="noopener">
+          公式：Mini dAppウォレット作成ガイド（LINE）
+        </a>
+      </p>
+      <p class="meta">作成後はこのページに戻り、次の「アドレス確認」へ進みます。</p>
+    </div>
+
+    <div class="arrow">↓</div>
+
+<!-- STEP 2: アドレス確認 -->
+<div class="step">
+  <h2>準備③：ウォレットアドレスの確認（画像付き）</h2>
+  <p>以下の手順で <strong>KAIAウォレットのアドレス</strong> を確認し、メモ帳などに保存します。</p>
+
+  <ol style="margin:10px 0 0 20px; padding:0; line-height:1.8">
+    <li>LINEで <strong>Dapp Portal</strong> を検索</li>
+    <li>トーク画面下メニューの <strong>「Portal」</strong> をタップ</li>
+    <li>Dapp Portal右下の <strong>「マイページ」</strong> をタップ</li>
+    <li><strong>「ウォレット接続」</strong> をタップ</li>
+    <li>LINEで連携</li>
+    <li><strong>「確認」</strong> をタップ</li>
+    <li>復元用パスワードを入力</li>
+    <li><strong>「次」</strong> をタップ</li>
+    <li>簡単パスワードを設定</li>
+    <li><strong>「続いてウォレットを連携する」</strong> をタップ</li>
+    <li><strong>「Approve」</strong> をタップ</li>
+    <li>簡単パスワードを入力</li>
+    <li><strong>「マイウォレット」右のコピー</strong> アイコンをタップ → メモ帳等に貼り付けて保存（後でDOSIに入力）</li>
+  </ol>
+
+  <!-- スクリーンショット (①〜⑬) -->
+  <figure>
+    <img src="IMG_4701.jpg" alt="① Dapp Portalを検索" style="max-width:100%;">
+    <figcaption class="meta">① LINEで「Dapp Portal」を検索</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4702.jpg" alt="② Portalをタップ" style="max-width:100%;">
+    <figcaption class="meta">② トーク画面下の「Portal」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4703.jpg" alt="③ マイページをタップ" style="max-width:100%;">
+    <figcaption class="meta">③ Dapp Portal右下「マイページ」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4704.jpg" alt="④ ウォレット接続をタップ" style="max-width:100%;">
+    <figcaption class="meta">④ 「ウォレット接続」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4705.jpg" alt="⑤ LINEで連携" style="max-width:100%;">
+    <figcaption class="meta">⑤ LINEで連携</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4706.jpg" alt="⑥ 確認をタップ" style="max-width:100%;">
+    <figcaption class="meta">⑥ 「確認」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4707.jpg" alt="⑦ 復元用パスワード入力" style="max-width:100%;">
+    <figcaption class="meta">⑦ 復元用パスワードを入力</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4708.jpg" alt="⑧ 次をタップ" style="max-width:100%;">
+    <figcaption class="meta">⑧ 「次」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4709.jpg" alt="⑨ 簡単パスワード設定" style="max-width:100%;">
+    <figcaption class="meta">⑨ 簡単パスワードを設定</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4710.jpg" alt="⑩ 続いてウォレットを連携する" style="max-width:100%;">
+    <figcaption class="meta">⑩ 「続いてウォレットを連携する」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4711.jpg" alt="⑪ Approveをタップ" style="max-width:100%;">
+    <figcaption class="meta">⑪ 「Approve」をタップ</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4712.jpg" alt="⑫ 簡単パスワードを入力" style="max-width:100%;">
+    <figcaption class="meta">⑫ 簡単パスワードを入力</figcaption>
+  </figure>
+
+  <figure>
+    <img src="IMG_4713.jpg" alt="⑬ コピーアイコンで保存" style="max-width:100%;">
+    <figcaption class="meta">⑬ 「マイウォレット」右のコピーアイコンをタップ → 保存</figcaption>
+  </figure>
+
+  <p class="meta" style="margin-top:10px">
+    ※ アドレスは「0x」で始まる英数字の長い文字列です。誤り防止のためコピー&ペースト推奨。
+  </p>
+</div>
+
+<div class="arrow">↓</div>
+
+  <!-- STEP 3: DOSIマイページ -->
+    <div class="step">
+      <h2>準備④：DOSIマイページへ</h2>
+      <p>アドレスの準備ができたら、<strong>STEP1「DOSIウォレット」</strong> に進み、マイページの「移行」から手続きを開始します。</p>
+    </div>
+      
       <!-- STEP 1 -->
       <div class="step">
         <h2>① DOSIウォレットを開く</h2>
         <p>アプリを最新版にアップデートし、ウォレットを起動します。</p>
-        <p class="meta">メニューに「移行」「Transfer」などの表示があるか確認。</p>
+        <p class="meta">メニューに「アイテム移転」のボタンがあるか確認。</p>
         <!-- 画像の例：アップロードしたファイル名に合わせて置き換え -->
         <!-- 例: IMG_4698.jpeg を使う場合 -->
         <!-- 不要ならこの figure ブロックごと削除してOK -->
@@ -81,7 +212,7 @@
       <!-- STEP 2 -->
       <div class="step">
         <h2>② 移行メニューを開く</h2>
-        <p>「KAIAへ移行」「Transfer」などのボタンをタップします。</p>
+        <p>「アイテム移転」のボタンをタップします。</p>
         <div class="branch">
           <div class="box">
             <span class="badge yes">見つかった</span>
