@@ -106,6 +106,25 @@
   footer{margin:32px 0 12px; text-align:center; color:var(--muted); font-size:.9rem}
   a{color:var(--brand); text-decoration:none}
   a:hover{text-decoration:underline}
+
+  /* モバイル表示：サイドバーを縦リスト化 */
+@media (max-width:768px){
+  .layout{flex-direction:column}
+  .sidebar{
+    position:static; 
+    box-shadow:none; 
+    border-radius:0; 
+    background:#fff;
+    border-bottom:1px solid #e5e7eb; 
+    padding:10px 12px;
+  }
+  .sidebar ul{
+    display:block;   /* 横並びをやめて縦並びに */
+  }
+  .sidebar li{
+    margin:6px 0;    /* 縦に間隔を取る */
+  }
+}
 </style>
 </head>
 <body>
