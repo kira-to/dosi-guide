@@ -15,17 +15,55 @@
     --warn:#d97706;
   }
   html,body{margin:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
-       color:var(--ink); background:var(--bg); line-height:1.7}
-  .container{max-width:960px;margin:22px auto;padding:0 16px}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Hiragino Sans","Noto Sans JP",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.7
+  }
+
+  /* ====== レイアウト（サイドメニュー＋コンテンツ） ====== */
+  .layout{display:flex;gap:20px;max-width:1200px;margin:22px auto;padding:0 16px}
+  .sidebar{
+    flex:0 0 220px; position:sticky; top:20px; align-self:flex-start;
+    background:#f9faff; padding:16px; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,.08)
+  }
+  .sidebar h3{margin:0 0 10px; font-size:16px; color:#245eea}
+  .sidebar ul{list-style:none;margin:0;padding:0}
+  .sidebar li{margin:6px 0}
+  .sidebar a{
+    text-decoration:none; color:#2f7ef6; font-weight:600; font-size:14px;
+    padding:4px 6px; border-radius:6px; display:inline-block
+  }
+  .sidebar a:hover{background:#eaf0ff}
+  .sidebar .sub{padding-left:12px; font-weight:500}
+
+  .content{flex:1; min-width:0}
+  .container{max-width:960px;margin:0 auto}
+
+  /* モバイル＝サイドバーを上部横スクロールに */
+  @media (max-width:768px){
+    .layout{flex-direction:column}
+    .sidebar{
+      position:static; box-shadow:none; border-radius:0; background:#fff;
+      border-bottom:1px solid #e5e7eb; padding:10px 8px; overflow-x:auto
+    }
+    .sidebar ul{display:flex; gap:10px}
+    .sidebar li{margin:0; white-space:nowrap}
+    .sidebar h3{display:none}
+  }
+
+  /* ====== ヘッダー ====== */
   header h1{margin:0 0 6px; font-size:clamp(24px,6vw,40px); color:var(--brand); text-align:center}
   header p{margin:0; color:var(--muted); text-align:center}
 
-  /* flow */
+  /* ====== 本文（フローチャート） ====== */
   .flow{margin:28px auto; display:flex; flex-direction:column; gap:24px; align-items:stretch}
-  .step{position:relative; background:var(--panel); border-radius:12px; padding:18px 18px 18px 18px;
-        box-shadow:0 6px 16px rgba(18,24,40,.06),0 2px 4px rgba(18,24,40,.06);
-        border-left:6px solid var(--brand)}
+  .step{
+    position:relative; background:var(--panel); border-radius:12px; padding:18px;
+    box-shadow:0 6px 16px rgba(18,24,40,.06),0 2px 4px rgba(18,24,40,.06);
+    border-left:6px solid var(--brand);
+    scroll-margin-top:90px; /* サイドバーやブラウザUIに埋もれない余白 */
+  }
   .step h2{margin:0 0 6px; font-size:clamp(18px,3.6vw,22px)}
   .step p{margin:0; color:var(--ink)}
   .meta{color:var(--muted); font-size:.92rem; margin-top:6px}
@@ -36,276 +74,207 @@
   figure img{max-width:100%; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,.08)}
   figcaption{font-size:.85rem; color:var(--muted); margin-top:4px}
 
-  /* 分岐（Yes/No の例） */
+  /* 説明画像の見やすさ調整（スマホ/PC） */
+  .step-image {
+    max-width: 90%;
+    height: auto;
+    display: block;
+    margin: 10px auto;
+  }
+  @media (min-width: 768px){
+    .step-image { max-width: 400px; } /* PCでは画像をコンパクトに */
+    figcaption.meta { font-size: 1.05rem; }
+  }
+  figcaption.meta {
+    font-size: 1rem; color: #333; text-align: center; margin-top: 6px; font-weight: 500;
+  }
+  /* 準備③の画像キャプションをさらに見やすく */
+  .step figure figcaption{
+    font-size: clamp(14px, 2vw, 18px); color:#333; font-weight:bold;
+    background:#f0f8ff; padding:6px 10px; border-radius:6px; margin-top:6px;
+  }
+
+  /* 分岐（Yes/No） */
   .branch{display:grid; gap:16px; grid-template-columns:1fr; margin-top:10px}
   .branch .box{border:2px dashed var(--brand); border-radius:10px; padding:12px}
   .badge{display:inline-block; font-weight:700; font-size:.86rem; padding:2px 8px; border-radius:999px}
   .yes{background:#eaf8ee; color:var(--ok); border:1px solid #c7f0d4}
   .no{background:#fff2e0; color:var(--warn); border:1px solid #ffe0b2}
-
-  @media(min-width:760px){
-    .branch{grid-template-columns:1fr 1fr}
-  }
+  @media(min-width:760px){ .branch{grid-template-columns:1fr 1fr} }
 
   /* フッター */
   footer{margin:32px 0 12px; text-align:center; color:var(--muted); font-size:.9rem}
   a{color:var(--brand); text-decoration:none}
   a:hover{text-decoration:underline}
-
-.step-image {
-  max-width: 90%;      
-  height: auto;
-  display: block;
-  margin: 10px auto;
-}
-
-@media (min-width: 768px) {
-  .step-image {
-    max-width: 400px;  /* PCで大きすぎないよう制限 */
-  }
-}
-
-/* 画像説明文（figcaption）を見やすく調整 */
-figcaption.meta {
-  font-size: 1rem;        /* 標準より大きく */
-  color: #333;            /* 黒に近いグレーで視認性UP */
-  text-align: center;     /* 中央寄せ */
-  margin-top: 6px;
-  font-weight: 500;       /* 少し太字で強調 */
-}
-
-@media (min-width: 768px) {
-  figcaption.meta {
-    font-size: 1.05rem;   /* PCではさらに少し大きく */
-  }
-}
-/* 準備③の画像キャプションを見やすくする */
-.step figure figcaption {
-  font-size: clamp(14px, 2vw, 18px);
-  color: #333;
-  font-weight: bold;
-  background: #f0f8ff;
-  padding: 6px 10px;
-  border-radius: 6px;
-  margin-top: 6px;
-}  
 </style>
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>DOSIからKAIAへの移行ガイド</h1>
-      <p>スマホだけでOK。スクショ付きのチャート式でご案内します。</p>
-    </header>
 
-    <section class="flow">
+  <div class="layout">
 
-      <!-- STEP 0: ウォレット有無 -->
-    <div class="step">
-      <h2>準備①：KAIAウォレットを持っていますか？</h2>
-      <div class="branch">
-        <div class="box">
-          <span class="badge yes">持っている</span>
-          <p>次のステップへ進み、ウォレットアドレスを確認してください。</p>
-        </div>
-        <div class="box">
-          <span class="badge no">持っていない</span>
-          <p>KAIAウォレットを新規作成してください。作成が終わったら次へ進みます。</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="arrow">↓</div>
-
- <!-- STEP 1: 新規作成 -->
-    <div class="step">
-      <h2>準備②：KAIAウォレットの新規作成</h2>
-      <p>まだウォレットが無い方は、下記ガイドに従って新規作成してください。</p>
-      <p>
-        <a href="https://medium.com/dapp-portal/mini-dapp%E3%82%A6%E3%82%A9%E3%83%AC%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E3%82%AC%E3%82%A4%E3%83%89-line-d5b279d6b9c3" target="_blank" rel="noopener">
-          公式：Mini dAppウォレット作成ガイド（LINE）
-        </a>
-      </p>
-      <p class="meta">作成後はこのページに戻り、次の「アドレス確認」へ進みます。</p>
-    </div>
-
-    <div class="arrow">↓</div>
-
-<!-- STEP 2: アドレス確認 -->
-<div class="step">
-  <h2>準備③：ウォレットアドレスの確認（画像付き）</h2>
-  <p>以下の手順で <strong>KAIAウォレットのアドレス</strong> を確認し、メモ帳などに保存します。</p>
-
-  <ol style="margin:10px 0 0 20px; padding:0; line-height:1.8">
-    <li>LINEで <strong>Dapp Portal</strong> を検索</li>
-    <li>トーク画面下メニューの <strong>「Portal」</strong> をタップ</li>
-    <li>Dapp Portal右下の <strong>「マイページ」</strong> をタップ</li>
-    <li><strong>「ウォレット接続」</strong> をタップ</li>
-    <li>LINEで連携</li>
-    <li><strong>「確認」</strong> をタップ</li>
-    <li>復元用パスワードを入力</li>
-    <li><strong>「次」</strong> をタップ</li>
-    <li>簡単パスワードを設定</li>
-    <li><strong>「続いてウォレットを連携する」</strong> をタップ</li>
-    <li><strong>「Approve」</strong> をタップ</li>
-    <li>簡単パスワードを入力</li>
-    <li><strong>「マイウォレット」右のコピー</strong> アイコンをタップ → メモ帳等に貼り付けて保存（後でDOSIに入力）</li>
-  </ol>
-
-  <!-- スクリーンショット (①〜⑬) -->
-  <figure>
-    <img src="IMG_4701.jpg" alt="① Dapp Portalを検索" class="step-image">
-    <figcaption class="meta">① LINEで「Dapp Portal」を検索</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4702.jpg" alt="② Portalをタップ" class="step-image">
-    <figcaption class="meta">② トーク画面下の「Portal」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4703.jpg" alt="③ マイページをタップ" class="step-image">
-    <figcaption class="meta">③ Dapp Portal右下「マイページ」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4704.jpg" alt="④ ウォレット接続をタップ" class="step-image">
-    <figcaption class="meta">④ 「ウォレット接続」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4705.jpg" alt="⑤ LINEで連携" class="step-image">
-    <figcaption class="meta">⑤ LINEで連携</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4706.jpg" alt="⑥ 確認をタップ" class="step-image">
-    <figcaption class="meta">⑥ 「確認」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4707.jpg" alt="⑦ 復元用パスワード入力" class="step-image">
-    <figcaption class="meta">⑦ 復元用パスワードを入力</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4708.jpg" alt="⑧ 次をタップ" class="step-image">
-    <figcaption class="meta">⑧ 「次」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4709.jpg" alt="⑨ 簡単パスワード設定" class="step-image">
-    <figcaption class="meta">⑨ 簡単パスワードを設定</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4710.jpg" alt="⑩ 続いてウォレットを連携する" class="step-image">
-    <figcaption class="meta">⑩ 「続いてウォレットを連携する」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4711.jpg" alt="⑪ Approveをタップ" class="step-image">
-    <figcaption class="meta">⑪ 「Approve」をタップ</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4712.jpg" alt="⑫ 簡単パスワードを入力" class="step-image">
-    <figcaption class="meta">⑫ 簡単パスワードを入力</figcaption>
-  </figure>
-
-  <figure>
-    <img src="IMG_4713.jpg" alt="⑬ コピーアイコンで保存" class="step-image">
-    <figcaption class="meta">⑬ 「マイウォレット」右のコピーアイコンをタップ → 保存</figcaption>
-  </figure>
-
-  <p class="meta" style="margin-top:10px">
-    ※ アドレスは「0x」で始まる英数字の長い文字列です。誤り防止のためコピー&ペースト推奨。
-  </p>
-</div>
-
-<div class="arrow">↓</div>
-
-  <!-- STEP 3: DOSIマイページ -->
-    <div class="step">
-      <h2>準備④：DOSIマイページへ</h2>
-      <p>アドレスの準備ができたら、<strong>STEP1「DOSIウォレット」</strong> に進み、マイページの「移行」から手続きを開始します。</p>
-    </div>
-      
-      <!-- STEP 1 -->
-      <div class="step">
-        <h2>① DOSIウォレットを開く</h2>
-        <p>アプリを最新版にアップデートし、ウォレットを起動します。</p>
-        <p class="meta">メニューに「アイテム移転」のボタンがあるか確認。</p>
-        <!-- 画像の例：アップロードしたファイル名に合わせて置き換え -->
-        <!-- 例: IMG_4698.jpeg を使う場合 -->
-        <!-- 不要ならこの figure ブロックごと削除してOK -->
-        <figure>
-          <img src="IMG_4698.jpeg" alt="DOSI ウォレット画面の例">
-          <figcaption>DOSI アプリの該当画面（例）。</figcaption>
-        </figure>
-      </div>
-
-      <div class="arrow">↓</div>
-
-      <!-- STEP 2 -->
-      <div class="step">
-        <h2>② 移行メニューを開く</h2>
-        <p>「アイテム移転」のボタンをタップします。</p>
-        <div class="branch">
-          <div class="box">
-            <span class="badge yes">見つかった</span>
-            <p>次へ進み、移行対象のアイテムを選択します。</p>
-          </div>
-          <div class="box">
-            <span class="badge no">見つからない</span>
-            <p>アプリ更新／ログイン再試行。表示がなければ後述の「よくある質問」を参照。</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="arrow">↓</div>
-
-      <!-- STEP 3 -->
-      <div class="step">
-        <h2>③ KAIA ウォレットを準備</h2>
-        <p>KAIA対応のウォレット（例：Kaia Wallet 等）を準備・接続します。</p>
-        <p class="meta">ウォレット接続の承認ダイアログが出たら許可。</p>
-      </div>
-
-      <div class="arrow">↓</div>
-
-      <!-- STEP 4 -->
-      <div class="step">
-        <h2>④ 移行を実行</h2>
-        <p>対象アイテムを確認して「移行」→ ウォレットで署名/承認を実行。</p>
-        <p class="meta">混雑時は反映に時間がかかることがあります。</p>
-      </div>
-
-      <div class="arrow">↓</div>
-
-      <!-- STEP 5 -->
-      <div class="step">
-        <h2>⑤ 完了確認</h2>
-        <p>KAIAチェーン側で保有アイテムが表示されることを確認します。</p>
-        <p class="meta">表示までタイムラグがある場合は数分待って再表示。</p>
-      </div>
-
-      <!-- FAQ / 補足 -->
-      <div class="step">
-        <h2>よくある質問（簡易）</h2>
+    <!-- ========== サイドメニュー（sticky） ========== -->
+    <aside class="sidebar" aria-label="サイドナビ">
+      <h3>目次</h3>
+      <nav>
         <ul>
-          <li><strong>画像が表示されない：</strong> ファイル名の大文字/拡張子が <code>src=""</code> と完全一致しているか確認。</li>
-          <li><strong>サイトが更新されない：</strong> 変更後に<strong>Commit changes</strong>したか、ページをリロード（キャッシュ削除）</li>
-          <li><strong>PC不要で編集？：</strong> GitHub の「… → Edit in place」でスマホから直接編集可能。</li>
+          <li><a href="#step0">ステップ0 準備</a></li>
+          <li><a href="#step0-1" class="sub">┗ 1 KAIAウォレット新規作成</a></li>
+          <li><a href="#step0-2" class="sub">┗ 2 アドレス確認</a></li>
+          <li><a href="#step1">ステップ1 DOSIマイページ</a></li>
+          <li><a href="#step2">ステップ2 ウォレットを開く</a></li>
+          <li><a href="#step3">ステップ3 移転</a></li>
+          <li><a href="#step4">ステップ4 確認</a></li>
         </ul>
+      </nav>
+    </aside>
+
+    <!-- ========== コンテンツ ========== -->
+    <main class="content">
+      <div class="container">
+        <header>
+          <h1>DOSIからKAIAへの移行ガイド</h1>
+          <p>スマホだけでOK。スクショ付きのチャート式でご案内します。</p>
+        </header>
+
+        <section class="flow">
+
+          <!-- ステップ0 準備（分岐） -->
+          <div class="step" id="step0">
+            <h2>ステップ0：準備（分岐）</h2>
+            <p class="meta">まず、KAIAウォレットの有無を確認してください。</p>
+            <div class="branch">
+              <div class="box">
+                <span class="badge yes">持っている</span>
+                <p>次の <strong>「アドレス確認」</strong>（ステップ0-2）へ進みます。</p>
+              </div>
+              <div class="box">
+                <span class="badge no">持っていない</span>
+                <p><strong>「KAIAウォレット新規作成」</strong>（ステップ0-1）へ進みます。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ0-1 KAIAウォレット新規作成 -->
+          <div class="step" id="step0-1">
+            <h2>ステップ0-1：KAIAウォレット新規作成</h2>
+            <p>まだウォレットが無い方は、下記ガイドに従って新規作成してください。</p>
+            <p>
+              <a href="https://medium.com/dapp-portal/mini-dapp%E3%82%A6%E3%82%A9%E3%83%AC%E3%83%83%E3%83%88%E4%BD%9C%E6%88%90%E3%82%AC%E3%82%A4%E3%83%89-line-d5b279d6b9c3" target="_blank" rel="noopener">
+                公式：Mini dAppウォレット作成ガイド（LINE）
+              </a>
+            </p>
+            <p class="meta">作成後はこのページに戻り、次の「アドレス確認」（ステップ0-2）へ。</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ0-2 アドレス確認（13枚の画像） -->
+          <div class="step" id="step0-2">
+            <h2>ステップ0-2：ウォレットアドレスの確認（画像付き）</h2>
+            <p>以下の手順で <strong>KAIAウォレットのアドレス</strong> を確認し、メモ帳などに保存します。</p>
+
+            <ol style="margin:10px 0 0 20px; padding:0; line-height:1.8">
+              <li>LINEで <strong>Dapp Portal</strong> を検索</li>
+              <li>トーク画面下メニューの <strong>「Portal」</strong> をタップ</li>
+              <li>Dapp Portal右下の <strong>「マイページ」</strong> をタップ</li>
+              <li><strong>「ウォレット接続」</strong> をタップ</li>
+              <li>LINEで連携</li>
+              <li><strong>「確認」</strong> をタップ</li>
+              <li>復元用パスワードを入力</li>
+              <li><strong>「次」</strong> をタップ</li>
+              <li>簡単パスワードを設定</li>
+              <li><strong>「続いてウォレットを連携する」</strong> をタップ</li>
+              <li><strong>「Approve」</strong> をタップ</li>
+              <li>簡単パスワードを入力</li>
+              <li><strong>「マイウォレット」右のコピー</strong> アイコンをタップ → メモ帳等に保存（後でDOSIに入力）</li>
+            </ol>
+
+            <!-- ①〜⑬のスクショ -->
+            <figure><img src="IMG_4701.jpg" alt="① Dapp Portalを検索" class="step-image"><figcaption class="meta">① LINEで「Dapp Portal」を検索</figcaption></figure>
+            <figure><img src="IMG_4702.jpg" alt="② Portalをタップ" class="step-image"><figcaption class="meta">② トーク画面下の「Portal」をタップ</figcaption></figure>
+            <figure><img src="IMG_4703.jpg" alt="③ マイページをタップ" class="step-image"><figcaption class="meta">③ Dapp Portal右下「マイページ」をタップ</figcaption></figure>
+            <figure><img src="IMG_4704.jpg" alt="④ ウォレット接続をタップ" class="step-image"><figcaption class="meta">④ 「ウォレット接続」をタップ</figcaption></figure>
+            <figure><img src="IMG_4705.jpg" alt="⑤ LINEで連携" class="step-image"><figcaption class="meta">⑤ LINEで連携</figcaption></figure>
+            <figure><img src="IMG_4706.jpg" alt="⑥ 確認をタップ" class="step-image"><figcaption class="meta">⑥ 「確認」をタップ</figcaption></figure>
+            <figure><img src="IMG_4707.jpg" alt="⑦ 復元用パスワード入力" class="step-image"><figcaption class="meta">⑦ 復元用パスワードを入力</figcaption></figure>
+            <figure><img src="IMG_4708.jpg" alt="⑧ 次をタップ" class="step-image"><figcaption class="meta">⑧ 「次」をタップ</figcaption></figure>
+            <figure><img src="IMG_4709.jpg" alt="⑨ 簡単パスワード設定" class="step-image"><figcaption class="meta">⑨ 簡単パスワードを設定</figcaption></figure>
+            <figure><img src="IMG_4710.jpg" alt="⑩ 続いてウォレットを連携する" class="step-image"><figcaption class="meta">⑩ 「続いてウォレットを連携する」をタップ</figcaption></figure>
+            <figure><img src="IMG_4711.jpg" alt="⑪ Approveをタップ" class="step-image"><figcaption class="meta">⑪ 「Approve」をタップ</figcaption></figure>
+            <figure><img src="IMG_4712.jpg" alt="⑫ 簡単パスワードを入力" class="step-image"><figcaption class="meta">⑫ 簡単パスワードを入力</figcaption></figure>
+            <figure><img src="IMG_4713.jpg" alt="⑬ コピーアイコンで保存" class="step-image"><figcaption class="meta">⑬ 「マイウォレット」右のコピーアイコンをタップ → 保存</figcaption></figure>
+
+            <p class="meta" style="margin-top:10px">※ アドレスは「0x」で始まる英数字の長い文字列。誤り防止のためコピペ推奨。</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ1 DOSIマイページ -->
+          <div class="step" id="step1">
+            <h2>ステップ1：DOSIマイページ</h2>
+            <p>DOSIアプリのマイページから「移行」メニュー（アイテム移転）を開きます。</p>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ2 ウォレットを開く -->
+          <div class="step" id="step2">
+            <h2>ステップ2：ウォレットを開く</h2>
+            <p>アプリを最新版にアップデートし、DOSIウォレットを起動します。</p>
+            <p class="meta">メニューに「アイテム移転」ボタンがあるか確認。</p>
+            <figure>
+              <img src="IMG_4698.jpeg" alt="DOSI ウォレット画面の例" class="step-image">
+              <figcaption class="meta">DOSI アプリの該当画面（例）</figcaption>
+            </figure>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ3 移転 -->
+          <div class="step" id="step3">
+            <h2>ステップ3：移転</h2>
+            <p>「アイテム移転」をタップし、対象アイテムを選択 → 確認 → ウォレットで承認します。</p>
+            <div class="branch">
+              <div class="box">
+                <span class="badge yes">ボタンが見つかった</span>
+                <p>そのまま手続きを進めてください。</p>
+              </div>
+              <div class="box">
+                <span class="badge no">見つからない</span>
+                <p>アプリ更新／再ログイン。表示がなければ時間をおいて再度確認。</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow">↓</div>
+
+          <!-- ステップ4 確認 -->
+          <div class="step" id="step4">
+            <h2>ステップ4：確認</h2>
+            <p>移行完了後、KAIA側でアイテムが反映されているかを確認します。</p>
+            <p class="meta">反映には時間差が出る場合があります。数分待って再表示してください。</p>
+          </div>
+
+          <!-- FAQ / 補足 -->
+          <div class="step">
+            <h2>よくある質問（簡易）</h2>
+            <ul>
+              <li><strong>画像が表示されない：</strong> ファイル名と拡張子（大文字/小文字）を <code>src=""</code> と一致させてください。</li>
+              <li><strong>サイトが更新されない：</strong> 変更後に <strong>Commit changes</strong> 済みか確認し、ブラウザを再読み込み（キャッシュ削除）。</li>
+              <li><strong>スマホだけで編集可能？：</strong> GitHub の「… → Edit in place」で編集 → Commit で反映。</li>
+            </ul>
+          </div>
+
+        </section>
+
+        <footer>
+          最終更新：<script>document.write(new Date().toLocaleDateString('ja-JP'))</script> /
+          管理：<a href="https://github.com/kira-to/dosi-guide" target="_blank" rel="noopener">GitHub リポジトリ</a>
+        </footer>
       </div>
-
-    </section>
-
-    <footer>
-      最終更新：<script>document.write(new Date().toLocaleDateString('ja-JP'))</script> /
-      管理：<a href="https://github.com/kira-to/dosi-guide" target="_blank" rel="noopener">GitHub リポジトリ</a>
-    </footer>
+    </main>
   </div>
 </body>
 </html>
