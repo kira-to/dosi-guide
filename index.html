@@ -158,20 +158,25 @@
         <section class="flow">
 
           <!-- ステップ0 準備（分岐） -->
-          <div class="step" id="step0">
-            <h2>ステップ0：準備（分岐）</h2>
-            <p class="meta">まず、KAIAウォレットの有無を確認してください。</p>
-            <div class="branch">
-              <div class="box">
-                <span class="badge yes">持っている</span>
-                <p>次の <strong>「アドレス確認」</strong>（ステップ0-2）へ進みます。</p>
-              </div>
-              <div class="box">
-                <span class="badge no">持っていない</span>
-                <p><strong>「KAIAウォレット新規作成」</strong>（ステップ0-1）へ進みます。</p>
-              </div>
-            </div>
-          </div>
+<div class="step" id="step0">
+  <h2>ステップ0：準備（分岐）</h2>
+  <p class="meta">まず、KAIAウォレットの状況を確認してください。</p>
+  <div class="branch">
+    <div class="box">
+      <span class="badge yes">① アドレスがわかっている</span>
+      <p><a href="#step1">ステップ1「DOSIマイページ」</a> へ進んでください。</p>
+    </div>
+    <div class="box">
+      <span class="badge warn">② 持っているがアドレス不明</span>
+      <p><a href="#step0-2">ステップ0-2「アドレス確認」</a> へ進んでください。</p>
+    </div>
+    <div class="box">
+      <span class="badge no">③ ウォレットを持っていない</span>
+      <p><a href="#step0-1">ステップ0-1「新規作成」</a> へ進んでください。</p>
+    </div>
+  </div>
+</div>
+
 
           <div class="arrow">↓</div>
 
